@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from bokeh.plotting import figure, output_file, save
 
+#Open CSV files GDP.csv and Unemployment.csv and identify the data points
 gdp_data = pd.read_csv('GDP.csv')
 unemployed = pd.read_csv('Unemployment.csv')
 x=gdp_data[['date']]
@@ -24,7 +25,7 @@ p.line(x.squeeze(), gdp.squeeze(), color="red", line_width=2, legend=" GDP ")
 p.line(x.squeeze(), unemployment.squeeze(), line_width=2, legend="% unemployed")
 output_file(file_name)
 
-#TRYING TO ADD MORE DATA TO GRAPH - BELOW DATA PRINTS TO TERMINAL
+#TRYING TO ADD MORE DATA TO SCATTERPLOT - BELOW DATA PRINTS TO TERMINAL
 covariance = np.cov(gdp_condensed, unemployment_condensed, bias=True)[0][1]
 correlation = np.corrcoef(gdp_condensed, unemployment_condensed)[0, 1]
 cov = ('Covariance: ' + str(covariance))

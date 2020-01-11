@@ -1,0 +1,4 @@
+#Ignore the below filetypes
+.html
+.zip
+.lock
