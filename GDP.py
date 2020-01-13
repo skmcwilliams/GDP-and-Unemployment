@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from bokeh.plotting import figure, output_file, save
+import traceback
+
 
 #Open CSV files GDP.csv and Unemployment.csv and identify the data points
 gdp_data = pd.read_csv('GDP.csv')
@@ -36,7 +38,8 @@ print(cov)
 try:
     save(p)
     print('Chart saved, open ' + str(file_name )+ ' to view')
-except: print('Chart could not print, please retry')
+except Exception:
+    traceback.print_exc()
 
     
 
