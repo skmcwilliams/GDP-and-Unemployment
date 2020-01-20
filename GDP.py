@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from bokeh.plotting import figure, output_file, save
+from bokeh.plotting import figure, output_file, show
 import traceback
 
 
@@ -36,8 +36,8 @@ print(cc)
 print(cov)
 
 try:
-    save(p)
-    print('Chart saved, open ' + str(file_name )+ ' to view')
+    show(p)
+    print('Open browser to view ' + str(file_name )+ ' chart')
 except Exception:
     traceback.print_exc()
 
