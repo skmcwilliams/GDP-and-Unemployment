@@ -15,8 +15,9 @@ gdpvariable=gdp_data[['change-current']]
 gdp=np.squeeze(np.array(gdpvariable))
 unemploymentvariable=unemployed[['unemployment']]
 unemployment=np.squeeze(np.array(unemploymentvariable))
-
-"""#MAKE DATA ONE DIMENTIONAL FOR STATISTICAL PURPOSES
+best_fit_line = (gdp+unemployment)/2
+"""
+#MAKE DATA ONE DIMENTIONAL FOR STATISTICAL PURPOSES
 par = np.polyfit(x, unemployment,1, full=True)
 slope=par[0][0]
 intercept=par[0][1]
@@ -24,11 +25,14 @@ unemploymentpredicted = [slope*i + intercept  for i in gdp]
 """
 
 #CREATE GDP AND UNEMPLOYMENT LINE GRAPHS
-title='GDP Change vs. Unemployment Change'
+title='GDP Change vs. Unemployment'
 file_name= 'GDPvsUnemployment.html'
-p = figure(title=title, x_axis_label='year', y_axis_label='%')
+p = figure(title=title, x_axis_label='Year', y_axis_label='%', plot_width=1000,
+toolbar_location="left", tools="pan,reset,save,wheel_zoom")
 p.line(x.squeeze(), gdp.squeeze(), color="red", line_width=2, legend_label=" % GDP Change ")
 p.line(x.squeeze(), unemployment.squeeze(), color='blue', line_width=2, legend_label="% Unemployed")
+p.line(x.squeeze(), best_fit_line.squeeze(), color='gray', line_dash='dashed', line_width=1, legend_label="Fit Line")
+p.title.align = 'center'
 output_file(file_name)
 
 #TRYING TO ADD MORE DATA TO SCATTERPLOT - BELOW DATA PRINTS TO TERMINAL
@@ -44,7 +48,4 @@ try:
     print('Open browser to view ' + str(file_name )+ ' chart')
 except Exception:
     traceback.print_exc()
-
-    
-
 
