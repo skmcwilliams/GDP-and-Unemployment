@@ -16,13 +16,6 @@ gdp=np.squeeze(np.array(gdpvariable))
 unemploymentvariable=unemployed[['unemployment']]
 unemployment=np.squeeze(np.array(unemploymentvariable))
 best_fit_line = (gdp+unemployment)/2
-"""
-#MAKE DATA ONE DIMENTIONAL FOR STATISTICAL PURPOSES
-par = np.polyfit(x, unemployment,1, full=True)
-slope=par[0][0]
-intercept=par[0][1]
-unemploymentpredicted = [slope*i + intercept  for i in gdp]
-"""
 
 #CREATE GDP AND UNEMPLOYMENT LINE GRAPHS
 title='GDP Change vs. Unemployment'
